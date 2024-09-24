@@ -28,24 +28,16 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `users` (
   `username` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `first_name` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `last_name` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `salary` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`username`, `first_name`, `last_name`, `password`, `salary`) VALUES
-('james_kirk','James','Kirk','kobayashi_maru','25000'),
-('mr_spock','Mr','Spock','0nlyL0g!c','99000'),
-('leonard_mccoy','Leonard','McCoy','hesDEADjim!','45000'),
-('nyota_uhura','Nyota','Uhura','StarShine','39000'),
-('montgomery_scott','Montgomery','Scott','ScottyDoesntKnow','1250'),
-('hiraku_sulu','Hikaru','Sulu','parking-break-on','3500'),
-('pavel_chekov','Pavel','Chekov','99victorvictor2','2500');
+INSERT INTO `users` (`username`, `password`) VALUES
+('Josh', 'DOAKC234!'),
+('Barnabé', 'RISK{SQL-Inject1on-M3dium_5678}');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
