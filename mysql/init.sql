@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`username`, `password`) VALUES
+INSERT INTO `users` (`username`, `password`, 'salary') VALUES
 ('Josh', 'DOAKC234!', 1000),
 ('Barnabé', 'RISK{SQL-Inject1on-M3dium_5678}', 2500);
 
