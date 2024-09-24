@@ -10,21 +10,14 @@
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
---
 -- Database: `payroll`
---
 
--- --------------------------------------------------------
-
---
 -- Table structure for table `users`
---
 
 CREATE TABLE IF NOT EXISTS `users` (
   `username` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -32,13 +25,11 @@ CREATE TABLE IF NOT EXISTS `users` (
   `salary` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
 -- Dumping data for table `users`
---
 
 INSERT INTO `users` (`username`, `password`, `salary`) VALUES
 ('Josh', 'DOAKC234!', 1000),
-('Baptiste', 'RISK{SQL-Inject1on-M3dium_5678}', 2500);
+('Barnabé', 'RISK{SQL-Inject1on-M3dium_5678}', 2500);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
