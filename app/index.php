@@ -41,12 +41,30 @@ if ($_POST) {
     error_log("USERNAME:" . $user);
     $pass = $_POST['password'];
     error_log("PASSWORD:" . $pass);
-    $sql = "select username from users where username = '$user' and password = '$pass'";
+    $sql = "select username, salary from users where username = '$user' and password = '$pass'";
     error_log("QUERY:" . $sql);
 
     if ($conn->multi_query($sql)) {
         do {
+            echo "<center>";
             echo "<p style='text-align:center'>RISK{SQL-Inject1on-E@sy_1234}</p>";
+            echo "<h2>Welcome, " . $user . "</h2><br>";
+            echo "<table style='border-radius: 25px; border: 2px solid black;' cellspacing=30>";
+            echo "<tr><th>Username</th><th>Salary</th></tr>";
+            if ($result = $conn->store_result()) {
+                while ($row = $result->fetch_assoc()) {
+                    $keys = array_keys($row);
+                    echo "<tr>";
+                    foreach ($keys as $key) {
+                        echo "<td>" . $row[$key] . "</td>";
+                    }
+                    echo "</tr>\n";
+                }
+                $result->free();
+            }
+            if (!$conn->more_results()) {
+                echo "</table></center>";
+            }
         } while ($conn->next_result());
     }
 }
