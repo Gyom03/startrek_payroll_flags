@@ -38,34 +38,33 @@ if (!isset($_POST['s'])) {
 <?php
 if ($_POST) {
     $user = $_POST['user'];
-    error_log("USERNAME:" . $user);
     $pass = $_POST['password'];
+    
+    error_log("USERNAME:" . $user);
     error_log("PASSWORD:" . $pass);
-    $sql = "select username, salary from users where username = '$user' and password = '$pass'";
+    
+    $sql = "SELECT username, salary FROM users WHERE username = '$user' AND password = '$pass'";
     error_log("QUERY:" . $sql);
 
     if ($conn->multi_query($sql)) {
-        do {
-            echo "<center>";
-            echo "<p style='text-align:center'>RISK{SQL-Inject1on-E@sy_1234}</p>";
-            echo "<h2>Welcome, " . $user . "</h2><br>";
-            echo "<table style='border-radius: 25px; border: 2px solid black;' cellspacing=30>";
-            echo "<tr><th>Username</th><th>Salary</th></tr>";
-            if ($result = $conn->store_result()) {
+        if ($result = $conn->store_result()) {
+            if ($result->num_rows > 0) {
+                // Si l'utilisateur existe, afficher les résultats
+                echo "<center>";
+                echo "<h2>Welcome, " . $user . "</h2><br>";
+                echo "<table style='border-radius: 25px; border: 2px solid black;' cellspacing=30>";
+                echo "<tr><th>Username</th><th>Salary</th></tr>";
+
                 while ($row = $result->fetch_assoc()) {
-                    $keys = array_keys($row);
-                    echo "<tr>";
-                    foreach ($keys as $key) {
-                        echo "<td>" . $row[$key] . "</td>";
-                    }
-                    echo "</tr>\n";
+                    echo "<tr><td>" . $row['username'] . "</td><td>" . $row['salary'] . "</td></tr>";
                 }
-                $result->free();
-            }
-            if (!$conn->more_results()) {
                 echo "</table></center>";
+            } else {
+                // Si les identifiants sont incorrects, afficher un message d'erreur
+                echo "<center><h2>Invalid username or password</h2></center>";
             }
-        } while ($conn->next_result());
+            $result->free();
+        }
     }
 }
 ?>
